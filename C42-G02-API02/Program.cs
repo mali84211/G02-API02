@@ -1,4 +1,6 @@
 
+using Microsoft.Extensions.Options;
+
 namespace C42_G02_API02
 {
     public class Program
@@ -14,6 +16,11 @@ namespace C42_G02_API02
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            builder.Services.AddDbContext<StoreDbContext>(Options=>
+            {
+                Options.UseSqlServer();
+            }
+            );
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
